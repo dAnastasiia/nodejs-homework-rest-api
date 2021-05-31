@@ -49,8 +49,8 @@ const removeContact = async (req, res, next) => {
 const updateContact = async (req, res, next) => {
     try {
       const body = Object.keys(req.body).length
-      if(body === 0){
-        return res.status(400).json({ status: 'error', code: 400, message: "missing fields"})
+      if(body === 0){        
+        return res.json({ status: 'error', code: 400, message: "missing fields"})
       }
   
       const contact = await Contacts.updateContact(req.params.contactId, req.body)
@@ -68,10 +68,10 @@ const updateStatusContact = async (req, res, next) => {
     try {
       const body = Object.keys(req.body).length
       if(body === 0){
-        return res.status(400).json({ status: 'error', code: 400, message: "missing field `favorite`"})
+        return res.json({ status: 'error', code: 400, message: "missing field `favorite`"})
       }
   
-      const contact = await Contacts.updateStatusContact(req.params.contactId, req.body)
+      const contact = await Contacts.updateContact(req.params.contactId, req.body)
       if(contact){
         return res.json({ status: 'success', code: 200, message: "contact status updated", contact})
       }

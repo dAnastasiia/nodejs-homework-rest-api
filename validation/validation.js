@@ -26,7 +26,7 @@ const validate = async (schema, obj, next) => {
     catch (err) {
         next({
             status: 400,
-            message: err.message,
+            message:  err.message,
         })
      }
 }
@@ -36,9 +36,9 @@ module.exports = {
         return validate(schemaCreateContact, req.body, next)
     },
     validationUpdateContact: (req, res, next) => {
-        return validate(schemaUpdateContact, req.body, next)
+        return validate(schemaUpdateContact, req.body, next, "missing fields")
     },
     validationUpdateStatusContact:(req, res, next) => {
-        return validate(schemaUpdateStatusContact, req.body, next)
+        return validate(schemaUpdateStatusContact, req.body, next, "missing field favorite")
     },
 }
