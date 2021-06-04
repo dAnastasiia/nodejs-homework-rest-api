@@ -12,7 +12,7 @@ const schemaUpdateContact = Joi.object({
     phone: Joi.string().optional(),
     email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).optional(),
     favorite: Joi.boolean().optional()
-})
+}).min(1)
 
 const schemaUpdateStatusContact = Joi.object({
     favorite: Joi.boolean().required()
