@@ -14,7 +14,7 @@ const signup = async (req, res, next) => {
 
       const {email, subscription} = await Users.createUser(req.body)
 
-      return res.status(201).json({ ...Response.created, user: {email, subscription} })
+      return res.json({ ...Response.created, user: {email, subscription} })
     } catch (e) {
       next(e)
     }
@@ -52,8 +52,27 @@ const logout = async (req, res, next) => {
     }
 }
 
+const current = async (req, res, next) => {
+  try {
+    const token = req.user.token
+    const user = await Users.findUserByToken(token)
+
+    if(user){
+      const {email, subscription} = user
+      
+      return res.json({ ...Response.ok, user: {email, subscription} })
+    }
+    
+    return res.json({ ...Response.unauthorized, message: 'Not authorized' })
+    
+  } catch (e) {
+    next(e)
+  }
+}
+
 module.exports = {
     signup,
     login,
-    logout
+    logout,
+    current
 }
