@@ -2,13 +2,13 @@ const Joi = require('joi');
 
 const schemaCreateUser = Joi.object({
     password: Joi.string().min(6).required(),
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'ua'] } }).required(),
     subscription: Joi.string().optional()
 })
 
 const schemaLoginUser = Joi.object({
     password: Joi.string().min(6).required(),
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ['com', 'net', 'ua'] } }).required(),
 })
 
 const validate = async (schema, obj, next) => {
