@@ -45,8 +45,6 @@ Success response will contain object with user`s info. For example,
 
 After that you receive a letter on email. You need confirm your account for successful login. 
 
-![Verification email](verify-email.png)
-
 Confirmation on this project stage live under `http://localhost:3000/api/users/verify/<id>`.
 
 Success response will contain next object: 
