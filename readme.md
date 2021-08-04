@@ -6,14 +6,14 @@ The public Contacts API, where you can create your own phonebook.
 
 ## Contacts
 
-Contacts identified by their ids ads their owner`s id, which are unique integers, and live under `/api/contacts`.
+Contacts identified by their ids ads their owner id, which are unique integers, and live under `/api/contacts`.
 All operations with contacts require token, which should be got after login.
 
 All items have some of the following properties:
 
 Field | Description | Type
 ----- | ----------- | ----
-**_id** | The contact's unique id. | String
+_id | The contact's unique id. | String
 owner | The owner's unique id. | String
 favorite | `true` if the contact added in favorite. | Boolean
 name | Contact`s name. | String
@@ -57,6 +57,7 @@ Success response will consist of objects array with all user`s contacts. For exa
 
 ### Add new contact
 Live under `/api/contacts`. POST operation.
+
 This operation requires **request body** with required fields "name", "email" and "phone". For example, 
 
 ```javascript
@@ -93,6 +94,7 @@ Success response equal success response for __Add new contact operation__.
 
 ### Update contact by id
 Live under `/api/contacts/<id>`. PUT operation.
+
 This operation requires **request body** with one of the fields "name", "email" and "phone". For example, 
 
 ```javascript
